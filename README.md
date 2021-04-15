@@ -1,0 +1,2 @@
+# devdojo-spring-webflux-essentials
+Curso ministrado pela DevDojo - Spring WebFlux Essentials segue a mesma linha dos cursos Spring Boot Essentials e Project Reactor Essentials. O DevDojo vai te guiar passo a passo sobre o essencial do WebFlux usando banco de dados relacionais reativos R2DBC. Desde o setup do projeto, conexão com o banco, segurança reativa das APIs, testes unitários, testes de integração... e por aí vai.
