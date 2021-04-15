@@ -33,6 +33,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-codec-socks:4.1.63.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.63.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.63.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-tools:3.3.16.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-r2dbc:2.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.3.10.RELEASE" level="project" />
