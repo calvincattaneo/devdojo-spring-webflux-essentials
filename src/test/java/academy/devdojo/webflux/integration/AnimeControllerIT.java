@@ -13,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
+import org.springframework.http.MediaTypeFactory;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.blockhound.BlockHound;
 import reactor.blockhound.BlockingOperationError;
@@ -51,6 +54,9 @@ public class AnimeControllerIT {
                 .thenReturn(Flux.just(anime));
 
         BDDMockito.when(animeRepositoryMock.findById(ArgumentMatchers.anyInt()))
+                .thenReturn(Mono.just(anime));
+
+        BDDMockito.when(animeRepositoryMock.save(AnimeCreator.createAnimeToBeSaved()))
                 .thenReturn(Mono.just(anime));
     }
 
@@ -122,6 +128,35 @@ public class AnimeControllerIT {
                 .expectBody()
                 .jsonPath("$.status").isEqualTo(404)
                 .jsonPath("$.developerMessage").isEqualTo("A ResponseStatusException Happened");
+    }
+
+    @Test
+    @DisplayName("save create an anime when successful")
+    public void save_CreatesAnime_WhenSuccessful() {
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
+        testClient
+                .post()
+                .uri("/animes/", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(animeToBeSaved))
+                .exchange()
+                .expectStatus().isCreated()
+                .expectBody(Anime.class)
+                .isEqualTo(anime);
+    }
+    @Test
+    @DisplayName("save returns mono error with bad request when name is empty")
+    public void save_ReturnsError_WhenNameIsEmpty() {
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved().withName("");
+        testClient
+                .post()
+                .uri("/animes/", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(animeToBeSaved))
+                .exchange()
+                .expectStatus().isBadRequest()
+                .expectBody()
+                .jsonPath("$.status").isEqualTo(400);
     }
 
 }
