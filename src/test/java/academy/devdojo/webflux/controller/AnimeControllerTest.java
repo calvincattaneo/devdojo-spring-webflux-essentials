@@ -1,7 +1,6 @@
 package academy.devdojo.webflux.controller;
 
 import academy.devdojo.webflux.domain.Anime;
-import academy.devdojo.webflux.repository.AnimeRepository;
 import academy.devdojo.webflux.service.AnimeService;
 import academy.devdojo.webflux.util.AnimeCreator;
 import org.junit.jupiter.api.*;
@@ -11,14 +10,12 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.server.ResponseStatusException;
 import reactor.blockhound.BlockHound;
 import reactor.blockhound.BlockingOperationError;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
-
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
@@ -75,8 +72,8 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findAll returns a flux of anime")
-    public void findAll_ReturnFluxOfAnime_WhenSuccessful() {
+    @DisplayName("listAll returns a flux of anime")
+    public void listAll_ReturnFluxOfAnime_WhenSuccessful() {
         StepVerifier.create(animeController.listAll())
                 .expectSubscription()
                 .expectNext(anime)
