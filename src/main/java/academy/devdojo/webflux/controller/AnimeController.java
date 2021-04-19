@@ -27,6 +27,7 @@ public class AnimeController {
     }
 
     @GetMapping(path = "{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Mono<Anime> findById(@PathVariable int id) {
         return animeService.findById(id);
     }
