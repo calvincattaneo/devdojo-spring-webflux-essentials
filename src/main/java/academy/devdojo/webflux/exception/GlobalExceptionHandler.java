@@ -1,6 +1,5 @@
 package academy.devdojo.webflux.exception;
 
-import io.netty.util.internal.StringUtil;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
@@ -14,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Mono;
+
 import java.util.Map;
 import java.util.Optional;
 

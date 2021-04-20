@@ -12,6 +12,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.4.6" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor.tools:blockhound:1.0.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.r2dbc:r2dbc-postgresql:0.8.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.r2dbc:r2dbc-spi:0.8.4.RELEASE" level="project" />

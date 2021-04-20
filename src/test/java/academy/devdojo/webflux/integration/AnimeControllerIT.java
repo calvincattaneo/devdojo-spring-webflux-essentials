@@ -1,9 +1,7 @@
 package academy.devdojo.webflux.integration;
 
 import academy.devdojo.webflux.domain.Anime;
-import academy.devdojo.webflux.exception.CustomAttributes;
 import academy.devdojo.webflux.repository.AnimeRepository;
-import academy.devdojo.webflux.service.AnimeService;
 import academy.devdojo.webflux.util.AnimeCreator;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -23,7 +20,6 @@ import reactor.blockhound.BlockingOperationError;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
-
 
 import java.util.List;
 import java.util.concurrent.FutureTask;
