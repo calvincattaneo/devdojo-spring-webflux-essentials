@@ -6,21 +6,21 @@ public class AnimeCreator {
 
     public static Anime createAnimeToBeSaved() {
         return Anime.builder()
-                .name("Tensei Shitara Slime Datta Ken")
-                .build();
+            .name("Tensei Shitara Slime Datta Ken")
+            .build();
     }
 
     public static Anime createValidAnime() {
         return Anime.builder()
-                .id(1)
-                .name("Tensei Shitara Slime Datta Ken")
-                .build();
+            .id(1)
+            .name("Tensei Shitara Slime Datta Ken")
+            .build();
     }
 
-    public static Anime createValidUpdatedAnime() {
+    public static Anime createdValidUpdatedAnime() {
         return Anime.builder()
-                .id(1)
-                .name("Tensei Shitara Slime Datta Ken 2")
-                .build();
+            .id(1)
+            .name("Tensei Shitara Slime Datta Ken 2")
+            .build();
     }
 }

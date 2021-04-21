@@ -18,30 +18,29 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         //@formatter:off
         return http
-                .csrf().disable()
-                .authorizeExchange()
+            .csrf().disable()
+            .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/animes/**").hasRole("ADMIN")
                 .pathMatchers(HttpMethod.PUT, "/animes/**").hasRole("ADMIN")
                 .pathMatchers(HttpMethod.DELETE, "/animes/**").hasRole("ADMIN")
                 .pathMatchers(HttpMethod.GET, "/animes/**").hasRole("USER")
                 .pathMatchers("/swagger-ui.html",
-                        "/swagger-ui/**",
-                        "/v3/api-docs/**",
-                        "/webjars/**")
-                .permitAll()
-                .anyExchange().authenticated()
-                .and()
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/webjars/**")
+            .permitAll()
+            .anyExchange().authenticated()
+            .and()
                 .formLogin()
-                .and()
+            .and()
                 .httpBasic()
-                .and()
+            .and()
                 .build();
         //@formatter:on
     }
 
     @Bean
-    public ReactiveAuthenticationManager authenticationManager(DevDojoUserDetailsService devDojoUserDetailsService) {
+    ReactiveAuthenticationManager authenticationManager(DevDojoUserDetailsService devDojoUserDetailsService) {
         return new UserDetailsRepositoryReactiveAuthenticationManager(devDojoUserDetailsService);
     }
-
 }

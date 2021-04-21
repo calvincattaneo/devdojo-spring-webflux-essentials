@@ -16,6 +16,6 @@ public class DevDojoUserDetailsService implements ReactiveUserDetailsService {
     @Override
     public Mono<UserDetails> findByUsername(String username) {
         return devDojoUserRepository.findByUsername(username)
-                .cast(UserDetails.class);
+            .cast(UserDetails.class);
     }
 }

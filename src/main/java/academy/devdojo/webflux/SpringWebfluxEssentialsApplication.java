@@ -3,19 +3,20 @@ package academy.devdojo.webflux;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.blockhound.BlockHound;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 @SpringBootApplication
 public class SpringWebfluxEssentialsApplication {
 
-	static {
-		BlockHound.install(builder ->
-				builder.allowBlockingCallsInside("java.util.UUID", "randomUUID"));
-	}
+    static {
+        BlockHound.install(
+            builder -> builder.allowBlockingCallsInside("java.util.UUID", "randomUUID")
+                .allowBlockingCallsInside("java.io.FilterInputStream", "read")
+                .allowBlockingCallsInside("java.io.InputStream", "readNBytes")
+        );
+    }
 
-	public static void main(String[] args) {
-		System.out.println(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("devdojo"));
-		SpringApplication.run(SpringWebfluxEssentialsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringWebfluxEssentialsApplication.class, args);
+    }
 
 }
