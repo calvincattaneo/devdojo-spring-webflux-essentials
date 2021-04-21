@@ -16,18 +16,27 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        //@formater:off
+        //@formatter:off
         return http
                 .csrf().disable()
                 .authorizeExchange()
-                    .pathMatchers(HttpMethod.POST, "/animes/**").hasRole("ADMIN")
-                    .pathMatchers(HttpMethod.GET, "/animes/**").hasRole("USER")
+                .pathMatchers(HttpMethod.POST, "/animes/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.PUT, "/animes/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.DELETE, "/animes/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.GET, "/animes/**").hasRole("USER")
+                .pathMatchers("/swagger-ui.html",
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                        "/webjars/**")
+                .permitAll()
                 .anyExchange().authenticated()
                 .and()
-                    .formLogin()
+                .formLogin()
                 .and()
-                    .build();
-        //@formater:on
+                .httpBasic()
+                .and()
+                .build();
+        //@formatter:on
     }
 
     @Bean
